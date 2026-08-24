@@ -1,0 +1,17 @@
+# Jupyter
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Data (audio datasets are typically large and not committed)
+data/
+*.wav
+
+# OS / editor files
+.DS_Store
+.vscode/
+.idea/
