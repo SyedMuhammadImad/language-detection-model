@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-05",
+  "title": "MFCC language detection coursework",
+  "runtime_verified_for_publication": false,
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "5d88202b853217c723bde4ea54206901e0bb7f1e0e782347d799332a294adc6f",
+      "bytes": 421
+    },
+    {
+      "path": "language_detection_model.ipynb",
+      "sha256": "d5e27235e156f74d2d1f6032b95516b6223afd5f6574e551c3e0d6f7f166c4ac",
+      "bytes": 12316
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685",
+      "bytes": 1056
+    },
+    {
+      "path": "README.md",
+      "sha256": "1d0e00d80c3f9725e74e9ae5f639fcc8d7a58c428668f990564aeaad36e52cf2",
+      "bytes": 3689
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "1ea06c8d5145d83555aa911fbf3edbb9949a39a4c52c8e3a4ecdb72b37db9b93",
+      "bytes": 38
+    }
+  ]
+}
