@@ -1,6 +1,6 @@
 {
-  "date": "2026-10-07",
-  "title": "MFCC language detection coursework",
+  "date": "2026-10-08",
+  "title": "MFCC language detection project",
   "completion_gate_passed": true,
   "files": [
     {
@@ -10,8 +10,8 @@
     },
     {
       "path": "audio.py",
-      "sha256": "b51efb5b33318562a65ff371eb146944cebe06663385a6f2290d7037c4a72c08",
-      "bytes": 11100
+      "sha256": "5b6696b46122439e1d4b263763a8826ea7401ae3a8864d470463e9897ebb38ec",
+      "bytes": 11274
     },
     {
       "path": "experiment.py",
@@ -20,8 +20,8 @@
     },
     {
       "path": "language_detection_model.ipynb",
-      "sha256": "4944402a25c290aa9be87933419bf7aeab876ad15cde43721fb0a3499f4ee964",
-      "bytes": 2194
+      "sha256": "cc1af6dbe1706cc52a4cbf7e3feb4100e1a512493660e8df66c00a94e95fc50a",
+      "bytes": 2191
     },
     {
       "path": "LICENSE",
@@ -35,8 +35,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "d2923596de4285c76f012658a1c86d144fbcbb25390298874ffaafa322b41c01",
-      "bytes": 3966
+      "sha256": "37b578f0eb7712c1788e85ecd28af043ae7f4ce39065202c0b4d6cf25f944f70",
+      "bytes": 3961
     },
     {
       "path": "requirements.txt",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VERIFICATION.json",
-      "sha256": "ac0044d6ea35d9af9e9e0fe3439f0824c6f54cd9b9b5df6e8955c1889d45ee84",
-      "bytes": 823
+      "sha256": "9a49eff3268f8a220a80d97550de0208d526546525dac58f7b4c43513f0ce119",
+      "bytes": 827
     }
   ]
 }

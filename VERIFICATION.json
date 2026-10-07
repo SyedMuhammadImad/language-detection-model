@@ -1,7 +1,7 @@
 {
   "date": "2026-10-07",
   "project": "language-detection-model",
-  "completion_scope": "academic project or finished document; not a production certification",
+  "completion_scope": "experimental project or finished document; not a production certification",
   "checks": [
     {
       "name": "6 common tests; neural-only test skipped",
