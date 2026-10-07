@@ -1,0 +1,280 @@
+{
+  "speaker_held_out": {
+    "folds": [
+      {
+        "fold": 1,
+        "train": 179,
+        "test": 89,
+        "models": {
+          "scratch": {
+            "accuracy": 0.3258426966292135,
+            "macro_precision": 0.11646586345381527,
+            "macro_recall": 0.32222222222222224,
+            "macro_f1": 0.1710914454277286,
+            "confusion_matrix": [
+              [
+                0,
+                29,
+                0
+              ],
+              [
+                1,
+                29,
+                0
+              ],
+              [
+                5,
+                25,
+                0
+              ]
+            ]
+          },
+          "sklearn": {
+            "accuracy": 0.3258426966292135,
+            "macro_precision": 0.11646586345381527,
+            "macro_recall": 0.32222222222222224,
+            "macro_f1": 0.1710914454277286,
+            "confusion_matrix": [
+              [
+                0,
+                29,
+                0
+              ],
+              [
+                1,
+                29,
+                0
+              ],
+              [
+                5,
+                25,
+                0
+              ]
+            ]
+          }
+        }
+      },
+      {
+        "fold": 2,
+        "train": 178,
+        "test": 90,
+        "models": {
+          "scratch": {
+            "accuracy": 0.3111111111111111,
+            "macro_precision": 0.2139917695473251,
+            "macro_recall": 0.3111111111111111,
+            "macro_f1": 0.20143220143220142,
+            "confusion_matrix": [
+              [
+                0,
+                29,
+                1
+              ],
+              [
+                0,
+                25,
+                5
+              ],
+              [
+                0,
+                27,
+                3
+              ]
+            ]
+          },
+          "sklearn": {
+            "accuracy": 0.3,
+            "macro_precision": 0.19999999999999998,
+            "macro_recall": 0.3,
+            "macro_f1": 0.19545454545454544,
+            "confusion_matrix": [
+              [
+                0,
+                29,
+                1
+              ],
+              [
+                0,
+                24,
+                6
+              ],
+              [
+                0,
+                27,
+                3
+              ]
+            ]
+          }
+        }
+      },
+      {
+        "fold": 3,
+        "train": 179,
+        "test": 89,
+        "models": {
+          "scratch": {
+            "accuracy": 0.5280898876404494,
+            "macro_precision": 0.36332429990966575,
+            "macro_recall": 0.5302681992337165,
+            "macro_f1": 0.43111111111111117,
+            "confusion_matrix": [
+              [
+                26,
+                0,
+                4
+              ],
+              [
+                14,
+                0,
+                16
+              ],
+              [
+                5,
+                3,
+                21
+              ]
+            ]
+          },
+          "sklearn": {
+            "accuracy": 0.5056179775280899,
+            "macro_precision": 0.3571428571428572,
+            "macro_recall": 0.5084291187739464,
+            "macro_f1": 0.4195357329160146,
+            "confusion_matrix": [
+              [
+                23,
+                2,
+                5
+              ],
+              [
+                15,
+                0,
+                15
+              ],
+              [
+                4,
+                3,
+                22
+              ]
+            ]
+          }
+        }
+      }
+    ],
+    "pooled_models": {
+      "scratch": {
+        "accuracy": 0.3880597014925373,
+        "macro_precision": 0.43771907166060037,
+        "macro_recall": 0.3872659176029962,
+        "macro_f1": 0.3789952584902618,
+        "confusion_matrix": [
+          [
+            26,
+            58,
+            5
+          ],
+          [
+            15,
+            54,
+            21
+          ],
+          [
+            10,
+            55,
+            24
+          ]
+        ]
+      },
+      "sklearn": {
+        "accuracy": 0.376865671641791,
+        "macro_precision": 0.4251373626373627,
+        "macro_recall": 0.37607157719517276,
+        "macro_f1": 0.36707635520465765,
+        "confusion_matrix": [
+          [
+            23,
+            60,
+            6
+          ],
+          [
+            16,
+            53,
+            21
+          ],
+          [
+            9,
+            55,
+            25
+          ]
+        ]
+      }
+    }
+  },
+  "clip_random_split": {
+    "train": 214,
+    "test": 54,
+    "models": {
+      "scratch": {
+        "accuracy": 0.6851851851851852,
+        "macro_precision": 0.6885964912280702,
+        "macro_recall": 0.6851851851851851,
+        "macro_f1": 0.6857445680975093,
+        "confusion_matrix": [
+          [
+            13,
+            3,
+            2
+          ],
+          [
+            4,
+            12,
+            2
+          ],
+          [
+            2,
+            4,
+            12
+          ]
+        ]
+      },
+      "sklearn": {
+        "accuracy": 0.6481481481481481,
+        "macro_precision": 0.6495241371402362,
+        "macro_recall": 0.648148148148148,
+        "macro_f1": 0.6484913484913485,
+        "confusion_matrix": [
+          [
+            12,
+            3,
+            3
+          ],
+          [
+            5,
+            11,
+            2
+          ],
+          [
+            2,
+            4,
+            12
+          ]
+        ]
+      }
+    },
+    "warning": "Speakers occur in both sides; this is not unseen-speaker performance."
+  },
+  "samples": 268,
+  "speakers": 3,
+  "labels": [
+    "English",
+    "Mixed",
+    "Urdu"
+  ],
+  "dataset_feature_sha256": "3f6993ae12e3a0fb4350d42abff6f97b778ee1a130c95e9ffb2a1c254c687465",
+  "class_counts": {
+    "English": 89,
+    "Mixed": 90,
+    "Urdu": 89
+  },
+  "preprocessing": "Mono 16kHz, first 30 seconds, MFCC13 n_fft512/hop256; train-only scaling"
+}

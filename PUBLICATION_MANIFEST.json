@@ -1,7 +1,7 @@
 {
-  "date": "2026-10-05",
+  "date": "2026-10-07",
   "title": "MFCC language detection coursework",
-  "runtime_verified_for_publication": false,
+  "completion_gate_passed": true,
   "files": [
     {
       "path": ".gitignore",
@@ -9,9 +9,19 @@
       "bytes": 421
     },
     {
+      "path": "audio.py",
+      "sha256": "b51efb5b33318562a65ff371eb146944cebe06663385a6f2290d7037c4a72c08",
+      "bytes": 11100
+    },
+    {
+      "path": "experiment.py",
+      "sha256": "d65bfffc4d7d0d9181415d1df27e40987571b28b48327f6f453c51720eca3c74",
+      "bytes": 73
+    },
+    {
       "path": "language_detection_model.ipynb",
-      "sha256": "d5e27235e156f74d2d1f6032b95516b6223afd5f6574e551c3e0d6f7f166c4ac",
-      "bytes": 12316
+      "sha256": "4944402a25c290aa9be87933419bf7aeab876ad15cde43721fb0a3499f4ee964",
+      "bytes": 2194
     },
     {
       "path": "LICENSE",
@@ -19,14 +29,29 @@
       "bytes": 1056
     },
     {
+      "path": "metrics.json",
+      "sha256": "ab8c415ceb16aa5890fc3f22fe31a908e93071b942bcb55d0d4c5d46939d3d00",
+      "bytes": 6236
+    },
+    {
       "path": "README.md",
-      "sha256": "1d0e00d80c3f9725e74e9ae5f639fcc8d7a58c428668f990564aeaad36e52cf2",
-      "bytes": 3689
+      "sha256": "d2923596de4285c76f012658a1c86d144fbcbb25390298874ffaafa322b41c01",
+      "bytes": 3966
     },
     {
       "path": "requirements.txt",
-      "sha256": "1ea06c8d5145d83555aa911fbf3edbb9949a39a4c52c8e3a4ecdb72b37db9b93",
-      "bytes": 38
+      "sha256": "fae8153bfb0911d7615c8a4d5b88f7283a91ff7f7b790954f8a7110758d30734",
+      "bytes": 85
+    },
+    {
+      "path": "test_audio.py",
+      "sha256": "8103876af8c7b9e7ca79776fb543cc03392ca4a08407791357992ad31e9b9788",
+      "bytes": 3573
+    },
+    {
+      "path": "VERIFICATION.json",
+      "sha256": "ac0044d6ea35d9af9e9e0fe3439f0824c6f54cd9b9b5df6e8955c1889d45ee84",
+      "bytes": 823
     }
   ]
 }

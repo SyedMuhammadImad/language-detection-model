@@ -1,88 +1,32 @@
-# Language Detection Model
+# MFCC language classification: scratch and scikit-learn
 
-A machine learning model that classifies short audio clips as **Urdu**,
-**English**, or **Mixed** (code-switched), using MFCC audio features and
-multinomial logistic regression — implemented both from scratch (NumPy)
-and with Scikit-learn for comparison.
+Completed academic experiment with fresh local-recording evaluation. This is a small-data model comparison, not a dependable general-purpose language detector. Code was repaired in a publication copy; original coursework and local recordings are retained. Team recordings and shared coursework are not claimed as solely authored work.
 
-## How It Works
+## Run
 
-1. **Feature Extraction** — each `.wav` file is loaded at a 16kHz sampling
-   rate, and 13-dimensional MFCCs (Mel-Frequency Cepstral Coefficients) are
-   extracted and averaged over time into a single feature vector per clip,
-   with a bias term prepended.
-2. **Labeling** — labels are inferred directly from filenames using a
-   naming convention (e.g. `ur-1-123.wav` → Urdu, `en-...` → English,
-   `mix-...` → Mixed).
-3. **Model (from scratch)** — a `MultinomialLogisticRegression` class
-   implements softmax activation, cross-entropy loss, and batch gradient
-   descent entirely in NumPy, with a plotted training loss curve.
-4. **Model (Scikit-learn)** — a second `LogisticRegression` model
-   (multinomial, `lbfgs` solver) is trained on the same data as a baseline
-   comparison.
-5. **Evaluation** — both models are evaluated on a held-out test split
-   using accuracy and a confusion matrix.
-6. **Inference** — a `predict_single_file()` helper runs either trained
-   model on a brand-new `.wav` file and returns the predicted language.
+Install `requirements.txt` in Python 3.12. Run `python -m pytest -q`, then:
 
-## Dataset
-
-Audio files are expected in `.wav` format, following the naming convention:
-
-```
-<language_code>-<speaker>-<clip_id>.wav
+```text
+python experiment.py --data-dir /path/to/recordings --cache-dir /path/to/local-cache --output /path/to/results.json --epochs 30
 ```
 
-Where `language_code` is one of:
+For the classical comparison `--epochs` does not change the fixed 1,500-step scratch optimization; it controls neural training only. WAV files can be arranged in folders such as `speaker-a english`, `speaker-a urdu`, and `speaker-a mixed`. Recognized suffixes also include eng/en, ur, mix/ue, and ar/arabic. For other layouts, pass `--manifest manifest.csv` with `path,label,speaker` columns; paths must be relative to `--data-dir`. Labels and speaker IDs must be nonempty. Every speaker must have recordings in each class. At least three speakers are required.
 
-| Code | Language |
-|---|---|
-| `ur` | Urdu |
-| `en` | English |
-| `mix` | Mixed (code-switched) |
+No recordings, audio features, model binaries, or plots are committed. The JSON metrics and feature/dataset fingerprint are included; exact reproduction requires the same locally retained recordings. No new recordings are downloaded. Audio is resampled to mono 16 kHz, capped at the first 30 seconds, and converted to 13 MFCCs (512-sample FFT, 256-sample hop). WAV input must be 0.15–60 seconds, mono/stereo and under 32 MB. Silent/invalid files and conflicting duplicate recordings fail explicitly; exact duplicates are removed. Scaling is fitted on training data only.
 
-The notebook was originally built to run in Google Colab, loading data
-from a Google Drive folder — update the `DATASET_PATH` variable to point
-to your own local or cloud dataset location.
+## Fresh results: held-out speakers
 
-## Results
+The measured dataset has 268 recordings, three speakers, and English, Urdu and mixed speech. Each of the three speakers is used once as the held-out test speaker. Results pooled across those test predictions:
 
-On the held-out test split, the Scikit-learn multinomial logistic
-regression model achieved:
+- scratch: 38.81% accuracy, 0.379 macro F1
+- sklearn: 37.69% accuracy, 0.367 macro F1
 
-- **Accuracy:** ~70.8%
-- **Confusion Matrix:**
+The scratch model retains explicit batch gradient descent, stable softmax, cross-entropy and bias, with class decoding, train-only standardization and small L2 regularization. A finite-difference gradient test checks the implementation. Both non-test speakers train each fold; no held-out-speaker labels tune hyperparameters. The separate random 80/20 clip split in `metrics.json` allows the same speakers on both sides and is not evidence of performance on new speakers. Its higher accuracy demonstrates why the split matters.
 
-  |  | Predicted Urdu | Predicted English | Predicted Mixed |
-  |---|---|---|---|
-  | **Actual Urdu** | 36 | 2 | 6 |
-  | **Actual English** | 2 | 16 | 2 |
-  | **Actual Mixed** | 9 | 5 | 11 |
+Programmatic single-file inference keeps the training scaler and label decoding together: fit `audio.LanguageDetector` on 13 mean-MFCC features and labels, then call `predict_file(wav_path)`. The file undergoes the same feature extraction and scaling as training. Neither a recording nor fitted model is embedded in this repository.
 
-The from-scratch model trains via batch gradient descent over 1500 epochs
-and its loss curve is plotted directly in the notebook.
+These results show weak transfer across speakers. Three voices, recording conditions and possible shared utterances are too limited to support broad deployment claims; speaker separation does not by itself control channel or phrase confounding. Mixed speech is one whole-clip class, not word-level code-switch detection. Models use no large pretrained speech representation.
 
-## How to Run
+## Notebook and verification
 
-1. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-2. Open `language_detection_model.ipynb` in Jupyter, JupyterLab, or Google Colab.
-3. Update `DATASET_PATH` to point to your folder of labeled `.wav` files.
-4. Run all cells — the notebook will train both models, plot the loss curve, and report accuracy/confusion matrices for each.
-
-## Tech
-
-- Python
-- NumPy (custom multinomial logistic regression implementation)
-- Librosa (MFCC audio feature extraction)
-- Scikit-learn (baseline logistic regression, evaluation metrics)
-- Matplotlib (loss curve visualization)
-
-
-## Publication copy
-
-Published 5 October 2026 at the owner's request. This is a sanitized source snapshot. Original local Git history and original files remain unchanged. Pictures, videos, binary archives, private/runtime data, dependency folders and credentials are excluded. Notebook outputs, attachments and incidental metadata are removed. Documents are text-only extracts. Media references and redacted configuration may need replacements before running. No claim of successful rerun, production readiness, sole authorship or independent validation is implied.
-
-Existing GitHub work checked and sanitized. Any supplied attribution is retained. Runtime operation not verified here.
+The notebook follows the same setup → experiment → results pattern as the repaired coursework repositories. It reads the included numeric metrics and runs an implementation smoke check; retraining uses the command above with your local recordings. Outputs are stripped. `VERIFICATION.json` records executed tests and the full fresh training run. Tests cover gradient correctness, noncontiguous labels, finite probabilities, invalid inputs, speaker separation, real feature extraction and single-file preprocessing; neural checks also verify invariance to padded frames.
